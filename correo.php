@@ -15,8 +15,8 @@ $email = $_POST['email'];
 $informacion = $_POST['informacion'];
 
 //se establece para quien lo manda se hace una replica
-$header = "From: antoniohg158@gmail.com" . "\r\n";
-$header.= "Reply-To: antoniohg158@gmail.com" . "\r\n";
+$header = "From: nofx_96@hotmail.com" . "\r\n";
+$header.= "Reply-To: nofx_96@hotmail.com" . "\r\n";
 $header.= "X-Mailer PHP/" . phpversion();
 
 //se toma el email y los datos del formulario

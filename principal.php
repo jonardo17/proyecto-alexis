@@ -26,7 +26,7 @@
 	if($tipo_usuario == 1){
 		$where = "";
 		} else if($tipo_usuario == 2){
-		$where = "WHERE ide=$ide";
+		// $where = "WHERE ide=$ide";
 	}
 	
 	
@@ -92,7 +92,7 @@
 									<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
 									></a>
 									<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-										<nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="Register.html">Registrar Nuevo Cliente </a><a class="nav-link" href="Register.html">Actualizar Cliente</a> <a class="nav-link" href="Register.html">Eliminar Cliente</a></nav>
+										<nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="Register.html">Registrar Nuevo Cliente </a><a class="nav-link" href="Register.html"></a> <a class="nav-link" href="Register.html"></a></nav>
 									</div>
 									
 										<div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
@@ -161,31 +161,42 @@
 										</thead>
 										
 										<tbody>
-<?php
+									<!--################################################ PRINT TABLE-->
+									<!--################################################ ############## OBTENER DATOS DE TABLA darsis-->
+									<?php //INICIO DE SCRIPT
 											$sql= "SELECT * FROM darsis";
 											$result = mysqli_query($mysqli,$sql);
 
-											while ($row=mysqli_fetch_array($result)){
-												?>
-												
-												<tr>
-													<td><?php echo $row['Website']; ?></td>
-													<td><?php echo $row['Hosting']; ?></td>
-													<td><?php echo $row['Hosting_Vence']; ?></td>
-													<td><?php echo $row['Dominio']; ?></td>
-													<td><?php echo $row['DominioVence']; ?></td>
-													<td><?php echo $row['Nombre']; ?></td>
-													<td><?php echo $row['Email']; ?></td>
-													<td><?php echo $row['Telefono']; ?></td>
-													<td><?php echo $row['Ciudad']; ?></td>
-													<td><?php echo $row['Statuss']; ?></td>
-													<td><?php echo $row['S_SL']; ?></td>
-													<td><?php echo $row['Proveedor']; ?></td>
-													<td><a href= "modificar.php?Website = echo $row['Website']?>">Modificar</a></td>
-													
-												</tr>
-											<?php } ?>
+											while ($row=mysqli_fetch_array($result)){ // ########### APERTURA DE WHILE
+									?> <!--CIERRE DE SCRIPT-->
+
+									<tr>
+										<td><?php echo $row['Website']; ?></td>
+										<td><?php echo $row['Hosting']; ?></td>
+										<td><?php echo $row['Hosting_Vence']; ?></td>
+										<td><?php echo $row['Dominio']; ?></td>
+										<td><?php echo $row['DominioVence']; ?></td>
+										<td><?php echo $row['Nombre']; ?></td>
+										<td><?php echo $row['Email']; ?></td>
+										<td><?php echo $row['Telefono']; ?></td>
+										<td><?php echo $row['Ciudad']; ?></td>
+										<td><?php echo $row['Statuss']; ?></td>
+										<td><?php echo $row['S_SL']; ?></td>
+										<td><?php echo $row['Proveedor']; ?></td>
+										
+										<?php
+										if($tipo_usuario == 1){
+										?>
+										<td><a href="modificar.php?Website=<?php echo $row['Website']?>">Modificar</a>
+										<a href="Eliminar.php?Website=<?php echo $row['Website']?>" id="btn-eliminar">Eliminar </nav> </a>
+										</td>
+										<?php }?>
+
+									</tr>
+									<?php } ?><!--CIERRE DE WHILE-->
 										</tbody>
+
+									
 									</table>
 								</div>
 								</div>
