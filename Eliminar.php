@@ -1,13 +1,12 @@
 <?php
 
 include("conexion.php");
-
+require "checkLogin.php";
 $delete=$_GET['Website'];
 
 $sql= "DELETE FROM darsis WHERE  Website='$delete'";
 
 $elimina= mysqli_query($mysqli,$sql);
-
 
 if($elimina){
 
@@ -18,12 +17,6 @@ echo "<script>window.location='principal.php';</script>";
     echo "<script>window.location='principal.php';</script>";
     
 }
-
-
-
-
-
-
 
 
 ?>

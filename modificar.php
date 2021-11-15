@@ -1,7 +1,7 @@
 <?php 
 
 include ("conexion.php");
-
+require "checkLogin.php";
 $website=$_GET['Website'];
 $query= "SELECT * FROM darsis WHERE Website='$website' LIMIT 1;";
 
@@ -95,8 +95,8 @@ $result = mysqli_fetch_assoc($result);
                                                     <input class="form-control py-4" id="" type="" name="Proveedor" placeholder="Escribe el Proveedor" value="<?php echo $result['Proveedor']?>"/></div>
                                                 </div>
                                             </div>
-                                            <div class="form-group mt-4 mb-0"><input type="submit" value="Modificar Registro"></div>
-                                            <input type="button" name="Cancelar" value="Cancelar" onClick="location.href='principal.php'">
+                                            <div class="form-group mt-4 mb-0"><input type="submit"  class="btn-primary" value="Modificar Registro"></div>
+                                            <input type="button" name="Cancelar" value="Cancelar" class="btn-danger" onClick="location.href='principal.php'">
                                             
                                         </form>
                                     </div>

@@ -19,7 +19,7 @@
 			$password_bd = $row['password'];
 			
 			$pass_c = sha1($password);
-			
+			//$pass_c = $password;
 			
 			if($password_bd == $pass_c){
 				
@@ -27,7 +27,13 @@
 				$_SESSION['nombre'] = $row['nombre'];
 				$_SESSION['tipo_usuario'] = $row['tipo_usuario'];
 				
-				header("Location: principal.php");
+				//REDIRECCIONAR DE ACUERDO AL TIPO DE USUARIO
+				if($_SESSION['tipo_usuario'] == 1){
+					header("Location: principal.php");
+				}else{
+					header("Location: formb.php");
+				}
+				
 				
 			} else {
 			
@@ -58,6 +64,7 @@
         <meta name="author" content="" />
         <title>Page Title - SB Admin</title>
         <link href="css/styles.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/styleLogin.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
 	</head>
     <body class="bg-primary">

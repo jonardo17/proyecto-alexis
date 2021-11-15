@@ -1,10 +1,5 @@
 <?php
-	
-	session_start();
-	
-	if(!isset($_SESSION['ide'])){
-		header("Location: index.php");
-	}
+	require "checkLogin.php";
 	
 	$nombre = $_SESSION['nombre'];
 	$tipo_usuario = $_SESSION['tipo_usuario'];
@@ -188,7 +183,7 @@
 										if($tipo_usuario == 1){
 										?>
 										<td><a href="modificar.php?Website=<?php echo $row['Website']?>">Modificar</a>
-										<a href="Eliminar.php?Website=<?php echo $row['Website']?>" id="btn-eliminar">Eliminar </nav> </a>
+										<a href="Eliminar.php?Website=<?php echo $row['Website']?>" class="btn-eliminar">Eliminar </a>
 										</td>
 										<?php }?>
 
@@ -223,5 +218,6 @@
 		<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
 		<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
 		<script src="assets/demo/datatables-demo.js"></script>
+		<script src="js/funct.js"></script>
 	</body>
 </html>

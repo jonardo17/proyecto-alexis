@@ -1,5 +1,6 @@
 <?php
 include ("conexion.php");
+require "checkLogin.php";
 $Website = $_POST["Website"];
 $Hosting = $_POST["Hosting"];
 $HostingVence = $_POST["HostingVence"];

@@ -2,8 +2,7 @@
 
 
 include("conexion.php");
-
-?>
+require "checkLogin.php";
 
 $Website= $_POST['website'];
 
@@ -16,6 +15,10 @@ echo $row['Website']."".$row['Hosting']."".$row['Dominio']."".$row['Telefono']."
 
 
 }
+
+?>
+
+
 
 
 
@@ -38,14 +41,16 @@ echo $row['Website']."".$row['Hosting']."".$row['Dominio']."".$row['Telefono']."
 	</head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="index.html">Sistema Web Darsis</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+            <a class="navbar-brand" href="formb.php">Sistema Web Darsis</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
 			><!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-                <div class="input-group">
-				<input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
-				<div class="input-group-append">
-				<button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
-				</div>
+			<ul class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $nombre; ?><i class="fas fa-user fa-fw"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        
+                        
+                        <a class="dropdown-item" href="logout.php">Salir</a>
+            
                 </div>
 			</form>
             <!-- Navbar-->
@@ -53,7 +58,7 @@ echo $row['Website']."".$row['Hosting']."".$row['Dominio']."".$row['Telefono']."
                 <li class="nav-item dropdown">
             <!--        <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $nombre; ?><i class="fas fa-user fa-fw"></i></a> -->
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">Configuración</a>
+                        <a class="dropdown-item" href="#"></a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="logout.php">Salir</a>
 					</div>
@@ -66,8 +71,7 @@ echo $row['Website']."".$row['Hosting']."".$row['Dominio']."".$row['Telefono']."
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <a class="nav-link" href="index.html"
-							><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard</a
+							
 							>
 							
 							<?php if($tipo_usuario == 1) { ?>
@@ -105,36 +109,35 @@ echo $row['Website']."".$row['Hosting']."".$row['Dominio']."".$row['Telefono']."
 							<?php } ?>
 
 							
-							<div class="sb-sidenav-menu-heading">Addons</div>
+						
 							<a class="nav-link" href="charts.html"
-							><div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-								Charts</a
+							
 								><a class="nav-link" href="tabla.php"
-								><div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-									Tables</a
+								><div class="sb-nav-link-icon"><i ></i></div>
+									</a
 								>
 							</div>
 					</div>
                     <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        Start Bootstrap
+                        <div class="small"></div>
+                       
 					</div>
 				</nav>
 			</div>
             <div id="layoutSidenav_content">
 				<main>
 					<div class="container-fluid">
-						<h1 class="mt-4">Tables</h1>
+						<h1 class="mt-4">Datos Encontrados</h1>
 						<ol class="breadcrumb mb-4">
-							<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-							<li class="breadcrumb-item active">Tables</li>
+							
+							
 						</ol>
 						<div class="card mb-4">
-							<div class="card-body">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>.</div>
+							
 						</div>
 						<div class="card mb-4">
 							
-							<div class="card-header"><i class="fas fa-table mr-1"></i>DataTable Example</div>
+							<div class="card-header"><i class="fas fa-table mr-1"></i>Datos De Cliente</div>
 							<div class="card-body">
 							<!-- se ajusta la tabla para que se va todo lo agregado stylos  en
 						    .table-responsive-md > .table-bordered  --> 	
@@ -142,7 +145,7 @@ echo $row['Website']."".$row['Hosting']."".$row['Dominio']."".$row['Telefono']."
 								<!-- se agrego un table-hover--> 
 								<table class="table table-bordered"  id="dataTable" width="100%" cellspacing="0">
 								<!--Alinear el boton a la derecha-->
-								<p align="right"><input type="submit" value="Eliminar" ></p>		
+								
 								<thead>
 											<tr>
 											<th>Website</th>
@@ -229,44 +232,45 @@ form{
 
     </style>
 
-<div>
-                    <form method="POST"  >
+			<div>
+                    <form method="POST"  action="correo.php" name="enviar" id="enviar">
 
-					<p>INGRESE LOS SIGUIENTES DATOS</p> 
-
-
-					<p>NOMBRE</p>
-					<input type="text" placeholder="Nombre" name="nombre"  required>
+						<p>INGRESE LOS SIGUIENTES DATOS</p> 
 
 
-					<br></br>
-					<p>Email</p>
-					<input type="text" placeholder="Email" name="email" required>
+						<p>NOMBRE</p>
+						<input type="text" placeholder="Nombre" name="in-nombre" id="in-nombre" required>
 
-					
-					<br></br>
-					<p> Peticion</p>
-					<p>
-					<textarea placeholder="Comentarios y Sugerencias" name="informacion" required></textarea>
-					</p>
 
-					<input type="submit" name="enviar">
+						<br></br>
+						<p>Email</p>
+						<input type="text" placeholder="Email" name="in-email" id="in-email" required>
 
+						
+						<br></br>
+						<p> Peticion</p>
+						<p>
+						<textarea placeholder="Comentarios y Sugerencias" name="in-comentarios" id="in-comentarios" required></textarea>
+						</p>
+
+						<input type="submit"  class="btn-primary" value="Enviar">
+	
+						
 
 
 					</form>
 
 
-</div>
+			</div>
 
 					<footer class="py-4 bg-light mt-auto">
 						<div class="container-fluid">
 						<div class="d-flex align-items-center justify-content-between small">
-					<div class="text-muted">Copyright &copy; Your Website 2019</div>
+					<div class="text-muted"></div>
 					<div>
-						<a href="#">Privacy Policy</a>
-						&middot;
-						<a href="#">Terms &amp; Conditions</a>
+						<a href="#"></a>
+						
+						<a href="#"></a>
 					</div>
 					</div>
 					</div>
